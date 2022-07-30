@@ -1,0 +1,142 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+# A continuation prompt that displays two filled in arrows
+continuation_prompt = "▶▶"
+
+format = """
+[](#9A348E)\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+$git_status\
+[](fg:#FCA17D bg:#86BBD8)\
+$nodejs\
+$golang\
+$java\
+$nim\
+$rust\
+$terraform\
+$vagrant\
+$aws\
+$gcloud\
+$python\
+$helm\
+$kubernetes\
+[](fg:#86BBD8 bg:#06969A)\
+$docker_context\
+[](fg:#06969A bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
+
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " "
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"src" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#FCA17D"
+format = '[[ $symbol $branch ](bg:#FCA17D)]($style)'
+
+[git_status]
+style = "bg:#FCA17D"
+format = '[[($all_status$ahead_behind )](bg:#FCA17D)]($style)'
+
+[aws]
+symbol = " "
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+
+[gcloud]
+disabled = true
+symbol = "️🇬️ "
+format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+style = "bold green"
+[gcloud.region_aliases]
+europe-west1 = "eu1"
+
+[package]
+symbol = " "
+format = '\[[$symbol$version]($style)\]'
+
+[python]
+symbol = " "
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[[ $symbol $context ](bg:#06969A)]($style) $path'
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[nodejs]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[nim]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[terraform]
+format = '\[[$symbol$workspace]($style)\]'
+
+[vagrant]
+format = '\[[$symbol($version)]($style)\]'
+
+[sudo]
+format = '\[[as $symbol]\]'
+
+[pulumi]
+format = '\[[$symbol$stack]($style)\]'
+
+[kubernetes]
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
+
+[helm]
+format = '\[[$symbol($version)]($style)\]'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[[ ♥ $time ](bg:#33658A)]($style)'
